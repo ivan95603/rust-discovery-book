@@ -22,13 +22,17 @@ Now build it:
 cargo build
 ```
 
-> **NOTE** It's possible to forget to rebuild the program *before* starting a GDB session; this
+> **NOTE**: It's possible to forget to rebuild the program *before* starting a GDB session; this
 > omission can lead to very confusing debug sessions. To avoid this problem you can call just `cargo run`
-> instead of `cargo build`; `cargo run`. The `cargo run` command will build *and* start a debug
+> instead of `cargo build`. The `cargo run` command will build *and* start a debug
 > session ensuring you never forget to recompile your program.
 
 Now we'll run and repeat the flashing procedure as we did in the previous section
 but with the new program. I'll let you type in the `cargo run`, *this will get easier shortly*. :)
+
+> **NOTE**: Don't forget to start ```openocd``` (debugger) on a separate terminal. 
+> Otherwise `target remote :3333` won't work!
+
 ``` console
 $ cargo run
     Finished dev [unoptimized + debuginfo] target(s) in 0.01s
@@ -226,7 +230,7 @@ Breakpoint 2, led_roulette::__cortex_m_rt_main () at src/05-led-roulette/src/mai
 ```
 
 Now open your terminal window so it's about 80 lines long an 170 characters wide if possible.
-> **NOTE** If you can't open the terminal that large, no problem you'll just see
+> **NOTE**: If you can't open the terminal that large, no problem you'll just see
 > `--Type <RET> for more, q to quit, c to continue without paging--` so just type return
 > until you see the `(gdb)` prompt. Then scroll your terminal window to
 > see the results.
@@ -362,7 +366,7 @@ $ cargo run --target thumbv7em-none-eabihf   # Compile and load the program into
 (gdb) disassemble /m                # Disassemble main function
 (gdb) continue                      # Led blinking on for 1/2 sec then off 1/2 sec
 ^C                                  # Stop with Ctrl+C
-(gdb) enable 1                      # Enable breakpiont 1
+(gdb) enable 1                      # Enable breakpoint 1
 (gdb) continue                      # Continue, will stop at main.rs:16
 (gdb) print half_period             # Print half_period result is 500
 (gdb) set half_period = 2000        # Set half_period to 2000ms
@@ -374,8 +378,8 @@ $ cargo run --target thumbv7em-none-eabihf   # Compile and load the program into
 ```
 
 The critical changes are at lines 13, 17 and 20 in the source code which
-you can see in the disassembly. At 13 we creating `v_half_period` and then
-`read()` it's value in lines 17 and 20. This means that when we `set half_period = 2000`
+you can see in the disassembly. At 13 we create `v_half_period` and then
+`read()` its value in lines 17 and 20. This means that when we `set half_period = 2000`
 the led will now be on for 2 seconds then off for 2 seconds.
 
 ``` console

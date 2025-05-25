@@ -1,6 +1,3 @@
-<<<<<<< HEAD
-[Choose Your Discovery](README.md)
-=======
 [Introduction](README.md)
 - [Background](01-background/README.md)
 - [Hardware/knowledge requirements](02-requirements/README.md)
@@ -9,6 +6,7 @@
     - [Windows](03-setup/windows.md)
     - [macOS](03-setup/macos.md)
     - [Verify the installation](03-setup/verify.md)
+    - [Setting up your IDE](03-setup/IDE.md)
 - [Meet your hardware](04-meet-your-hardware/README.md)
     - [micro:bit v2](04-meet-your-hardware/microbit-v2.md)
     - [micro:bit v1](04-meet-your-hardware/microbit-v1.md)
@@ -50,6 +48,10 @@
     - [Gravity is up?](10-punch-o-meter/gravity-is-up.md)
     - [The challenge](10-punch-o-meter/the-challenge.md)
     - [My solution](10-punch-o-meter/my-solution.md)
+- [Snake game](11-snake-game/README.md)
+    - [Game logic](11-snake-game/game-logic.md)
+    - [Controls](11-snake-game/controls.md)
+    - [Non-blocking display](11-snake-game/nonblocking-display.md)
 - [What's left for you to explore](explore.md)
 
 ---
@@ -66,4 +68,3 @@
 <!--     - [My other solution](17-async-io-the-future/my-other-solution.md) -->
 <!--     - [More challenges](17-async-io-the-future/more-challenges.md) -->
 ---
->>>>>>> rewrite

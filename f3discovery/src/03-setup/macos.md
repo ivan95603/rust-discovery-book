@@ -1,20 +1,15 @@
 # macOS
 
-All the tools can be install using [Homebrew]:
+All the tools can be installed using [Homebrew]:
 
 [Homebrew]: http://brew.sh/
 
-Install ArmMbed
 ``` console
-brew tap ArmMbed/homebrew-formulae
-```
-Install the ARM GCC toolchain
-``` console
-brew install arm-none-eabi-gcc
-```
-Install minicom and OpenOCD
-``` console
-brew install minicom openocd
+$ # ARM GCC debugger
+$ brew install arm-none-eabi-gdb
+
+$ # Minicom and OpenOCD
+$ brew install minicom openocd
 ```
 
 That's all! Go to the [next section].

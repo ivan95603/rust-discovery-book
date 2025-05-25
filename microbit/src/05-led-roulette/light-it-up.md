@@ -23,7 +23,7 @@ Luckily for us though we can use the aforementioned micro:bit BSP
 which abstracts all of this nicely away from us.
 
 [schematic page]: https://tech.microbit.org/hardware/schematic/
-[micro:bit v2 schematic]: https://github.com/microbit-foundation/microbit-v2-hardware/blob/main/V2/MicroBit_V2.0.0_S_schematic.PDF
+[micro:bit v2 schematic]: https://github.com/microbit-foundation/microbit-v2-hardware/blob/main/V2.00/MicroBit_V2.0.0_S_schematic.PDF
 [micro:bit v1 schematic]: https://github.com/bbcmicrobit/hardware/blob/master/V1.5/SCH_BBC-Microbit_V1.5.PDF
 
 ## Actually lighting it up!
@@ -74,7 +74,7 @@ that is highly unlikely in our case, we can just `unwrap()` the result.
 
 ## Testing it
 
-Testing our little program is quite simple. First put it into `src/mains.rs`. Afterwards we simply have to run the
+Testing our little program is quite simple. First put it into `src/main.rs`. Afterwards we simply have to run the
 `cargo embed` command from the last section again, let it flash and just like before. Then open our GDB and connect
 to the GDB stub:
 

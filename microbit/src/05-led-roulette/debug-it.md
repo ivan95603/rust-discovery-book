@@ -4,7 +4,7 @@ Before we debug our little program let's take a moment to quickly understand wha
 happening here. In the previous chapter we already discussed the purpose of the second chip
 on the board as well as how it talks to our computer, but how can we actually use it?
 
-The little option `default.gb.enabled = true` in `Embed.toml` made `cargo-embed` open a so-called "GDB stub" after flashing,
+The little option `default.gdb.enabled = true` in `Embed.toml` made `cargo-embed` open a so-called "GDB stub" after flashing,
 this is a server that our GDB can connect to and send commands like "set a breakpoint at address X" to. The server can then decide
 on its own how to handle this command. In the case of the `cargo-embed` GDB stub it will forward the
 command to the debugging probe on the board via USB which then does the job of actually talking to the
@@ -23,10 +23,22 @@ $ gdb target/thumbv7em-none-eabihf/debug/led-roulette
 $ gdb target/thumbv6m-none-eabi/debug/led-roulette
 ```
 
-> **NOTE** Depending on which GDB you installed you will have to use a different command to launch it,
+> **NOTE**: Depending on which GDB you installed you will have to use a different command to launch it,
 > check out [chapter 3] if you forgot which one it was.
 
 [chapter 3]: ../03-setup/index.md#tools
+
+> **NOTE**: If you are getting `target/thumbv7em-none-eabihf/debug/led-roulette: No such file or directory`
+> error, try adding `../../` to the file path, for example:
+>
+> ```shell
+> $ gdb ../../target/thumbv7em-none-eabihf/debug/led-roulette
+> ```
+>
+> This is caused by each example project being in a `workspace` that contains the entire book, and workspaces have
+> a single `target` directory. Check out [Workspaces chapter in Rust Book] for more.
+
+[Workspaces chapter in Rust Book]: https://doc.rust-lang.org/book/ch14-03-cargo-workspaces.html#creating-a-workspace
 
 > **NOTE**: If `cargo-embed` prints a lot of warnings here don't worry about it. As of now it does not fully
 > implement the GDB protocol and thus might not recognize all the commands your GDB is sending to it,
@@ -72,7 +84,7 @@ mode, on the GDB shell enter the following command:
 (gdb) layout src
 ```
 
-> **NOTE** Apologies Windows users. The GDB shipped with the GNU ARM Embedded Toolchain doesn't
+> **NOTE**: Apologies Windows users. The GDB shipped with the GNU ARM Embedded Toolchain doesn't
 > support this TUI mode `:-(`.
 
 ![GDB session](../assets/gdb-layout-src.png "GDB TUI")
@@ -89,6 +101,7 @@ Continuing.
 Breakpoint 2, led_roulette::__cortex_m_rt_main () at src/05-led-roulette/src/main.rs:13
 (gdb)
 ```
+
 At any point you can leave the TUI mode using the following command:
 
 ```
@@ -225,7 +238,7 @@ Ending remote debugging.
 [Inferior 1 (Remote target) detached]
 ```
 
-> **NOTE** If the default GDB CLI is not to your liking check out [gdb-dashboard]. It uses Python to
+> **NOTE**: If the default GDB CLI is not to your liking check out [gdb-dashboard]. It uses Python to
 > turn the default GDB CLI into a dashboard that shows registers, the source view, the assembly view
 > and other things.
 

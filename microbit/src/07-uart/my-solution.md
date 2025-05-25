@@ -6,7 +6,7 @@
 
 use cortex_m_rt::entry;
 use core::fmt::Write;
-use heapless::{Vec, consts};
+use heapless::Vec;
 use rtt_target::rtt_init_print;
 use panic_rtt_target as _;
 
@@ -56,7 +56,7 @@ fn main() -> ! {
     };
 
     // A buffer with 32 bytes of capacity
-    let mut buffer: Vec<u8, consts::U32> = Vec::new();
+    let mut buffer: Vec<u8, 32> = Vec::new();
 
     loop {
         buffer.clear();
@@ -66,7 +66,7 @@ fn main() -> ! {
             let byte = nb::block!(serial.read()).unwrap();
 
             if buffer.push(byte).is_err() {
-                writeln!(serial, "error: buffer full").unwrap();
+                write!(serial, "error: buffer full\r\n").unwrap();
                 break;
             }
 

@@ -43,7 +43,7 @@ This makes Printed Circuit Boards (PCB) smaller and cheaper to design and manufa
 processor. For applications which run on batteries, that makes a huge difference.
 
 **Responsiveness.** To accomplish their purpose, some embedded systems must always react within a
-limited time interval (e.g. the "anti-lock" breaking system of a car). If the system misses this
+limited time interval (e.g. the "anti-lock" braking system of a car). If the system misses this
 type of *deadline*, a catastrophic failure might occur. Such a deadline is called a "hard real time"
 requirement. An embedded system which is bound by such a deadline is referred to as a "hard
 real-time system". A general purpose computer and OS usually has many software components which
@@ -73,7 +73,7 @@ testing".
 
 Or why should I prefer C over Rust?
 
-The C ecosystem is way more mature. Off the shelf solution for several problems already exist. If
+The C ecosystem is way more mature. Off the shelf solutions for several problems already exist. If
 you need to control a time sensitive process, you can grab one of the existing commercial Real Time
 Operating Systems (RTOS) out there and solve your problem. There are no commercial, production-grade
 RTOSes in Rust yet so you would have to either create one yourself or try one of the ones that are
